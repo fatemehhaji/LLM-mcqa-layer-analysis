@@ -29,6 +29,6 @@ To set up the project, follow these steps:
 
 # Running the Script
 
-Modify data_path: Update the data_path to point to the dataset file.
-Run the Script: Execute the code to perform beam search and generate responses for multiple layers of the LLM.
-Analyze the Results: The resulting dataset with responses from each layer will be saved to a CSV file, which can be analyzed further.
+- Modify data_path: Update the data_path to point to the dataset file.
+- Run the Script: Execute the code to perform beam search and generate responses for multiple layers of the LLM.
+- Analyze the Results: The resulting dataset with responses from each layer will be saved to a CSV file, which can be analyzed further.
