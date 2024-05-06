@@ -32,3 +32,18 @@ To set up the project, follow these steps:
 - Modify data_path: Update the data_path to point to the dataset file.
 - Run the Script: Execute the code to perform beam search and generate responses for multiple layers of the LLM.
 - Analyze the Results: The resulting dataset with responses from each layer will be saved to a CSV file, which can be analyzed further.
+
+## Results
+
+We evaluated the accuracy of multiple-choice question answering across different layers of the Mistral-7B-Instruct-v0.2 Large Language Model (LLM). The results, presented below, show how accuracy varies as we progress through the layers:
+
+- **answer_layer_8:** The model's output from layer 8 exhibited an accuracy of **0.0**, indicating that it did not correctly answer any of the multiple-choice questions at this level.
+
+- **answer_layer_16:** Accuracy improved slightly at layer 16, with a score of **0.0667**. This means that approximately 7% of the questions were answered correctly.
+
+- **answer_layer_24:** Layer 24 showed further improvement, achieving an accuracy score of **0.1**, correctly answering around 10% of the questions.
+
+- **answer_layer_32:** The best performance was observed at layer 32, where the model achieved an accuracy score of **0.4667**. This indicates that about 47% of the questions were answered correctly.
+
+Overall, accuracy improved progressively as the model processed deeper layers, suggesting that later layers contribute more effectively to accurate multiple-choice question answering.
+
