@@ -89,6 +89,7 @@ We evaluated the accuracy of multiple-choice question answering across different
 - **Layer 32:** Best performance, about 93% of questions answered correctly.
 
 Overall, accuracy improved progressively as the model processed deeper layers, suggesting that later layers contribute more effectively to accurate multiple-choice question answering.
+These findings suggest that deeper layers are more reliable for factual question answering, while early layers can vary in accuracy.
 
 ## Probability Analysis
 
@@ -112,4 +113,7 @@ This visualization provides insights into how the model's confidence in its pred
 ## Observations
 
 Even though the questions were simple, which models can usually answer easily, the results were worse in the multiple-choice format with one-shot examples. This suggests that the structure of multiple-choice questions and the one-shot prompting may have affected the model's performance.
+
+## References
+- [Natural Language Generation from Scratch in Large Language Models with PyTorch](https://medium.com/@pashashaik/natural-language-generation-from-scratch-in-large-language-models-with-pytorch-4d9379635316)
 
