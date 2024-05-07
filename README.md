@@ -14,36 +14,70 @@ To set up the project, follow these steps:
 3. Install Dependencies, including PyTorch, and also
    
    ```bash
-   pip install transformers accelerate peft bitsandbytes einops chardet datasets
+   pip install transformers accelerate peft bitsandbytes einops chardet datasets matplotlib
    ```
 
 4. Run the notebooks:
 - `generate_with_different_layers.ipynb`: Generate answers with different layers of the LLM
 
+### Data
+The dataset is expected to be in a JSON format, tailored to multiple-choice question answering. Ensure that the data file is uploaded to the correct path you specify in the code.
+
+**Sample Data:**
+```json
+{
+  "examples": [
+    {
+      "input": "How many legs do horses have?",
+      "target_scores": {
+        "two": 0,
+        "four": 1,
+        "six": 0,
+        "three": 0,
+        "one": 0,
+        "none": 0
+      }
+    },
+    {
+      "input": "How many eyes do horses have?",
+      "target_scores": {
+        "two": 1,
+        "four": 0,
+        "six": 0,
+        "three": 0,
+        "one": 0,
+        "none": 0
+      }
+    }
+  ]
+}
+```
+
 # Usage
 
-1. Load the Model and Dataset: The code starts by loading the pre-trained LLM model and tokenizer using Hugging Face Transformers. The dataset used is in JSON format and should be modified as per the desired data source.
+1. Load the Model: The code starts by loading the pre-trained LLM model and tokenizer using Hugging Face Transformers.
 2. Beam Search with Layer: The beam_search_with_layer function allows evaluating the model's output from specific layers by using beam search for decoding.
 3. Extracting Answers: The extract_answer function helps parse the model's responses to extract the answers based on predefined patterns.
 4. Generate Layer Responses: The generate_layer_responses function applies the beam search for multiple layers and appends the generated responses to the dataset.
 
 # Running the Script
-
-- Modify data_path: Update the data_path to point to the dataset file.
-- Run the Script: Execute the code to perform beam search and generate responses for multiple layers of the LLM.
-- Analyze the Results: The resulting dataset with responses from each layer will be saved to a CSV file, which can be analyzed further.
+To generate results:
+- **Set Data Path:** Ensure the dataset is uploaded and the data path is correctly set in the code.
+- **Run the Code:** Execute the code to perform beam search and generate responses.
+- **Analyze Results:** Examine the dataset to see responses and answers generated for each layer.
 
 ## Results
 
 We evaluated the accuracy of multiple-choice question answering across different layers of the Mistral-7B-Instruct-v0.2 Large Language Model (LLM). The results, presented below, show how accuracy varies as we progress through the layers:
 
-- **answer_layer_8:** The model's output from layer 8 exhibited an accuracy of **0.0**, indicating that it did not correctly answer any of the multiple-choice questions at this level.
-
-- **answer_layer_16:** Accuracy improved slightly at layer 16, with a score of **0.0667**. This means that approximately 7% of the questions were answered correctly.
-
-- **answer_layer_24:** Layer 24 showed further improvement, achieving an accuracy score of **0.1**, correctly answering around 10% of the questions.
-
-- **answer_layer_32:** The best performance was observed at layer 32, where the model achieved an accuracy score of **0.4667**. This indicates that about 47% of the questions were answered correctly.
+- **Layer 8:** Accuracy was low, with no correct answers.
+- **Layer 16:** Accuracy improved slightly, around 7% of questions answered correctly.
+- **Layer 24:** Further improvement, with 10% of questions answered correctly.
+- **Layer 32:** Best performance, about 47% of questions answered correctly.
 
 Overall, accuracy improved progressively as the model processed deeper layers, suggesting that later layers contribute more effectively to accurate multiple-choice question answering.
+
+## Observations
+
+Even though the questions were simple, which models can usually answer easily, the results were worse in the multiple-choice format with one-shot examples. This suggests that the structure of multiple-choice questions and the one-shot prompting may have affected the model's performance.
 
