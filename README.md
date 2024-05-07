@@ -84,9 +84,9 @@ This simple code snippet shows how to access the hidden states of a particular l
 We evaluated the accuracy of multiple-choice question answering across different layers of the Mistral-7B-Instruct-v0.2 Large Language Model (LLM). The results, presented below, show how accuracy varies as we progress through the layers:
 
 - **Layer 8:** Accuracy was low, with no correct answers.
-- **Layer 16:** Accuracy improved slightly, around 7% of questions answered correctly.
-- **Layer 24:** Further improvement, with 10% of questions answered correctly.
-- **Layer 32:** Best performance, about 47% of questions answered correctly.
+- **Layer 16:** Accuracy improved slightly, around 16% of questions answered correctly.
+- **Layer 24:** Further improvement, with 40% of questions answered correctly.
+- **Layer 32:** Best performance, about 93% of questions answered correctly.
 
 Overall, accuracy improved progressively as the model processed deeper layers, suggesting that later layers contribute more effectively to accurate multiple-choice question answering.
 
