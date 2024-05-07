@@ -96,16 +96,16 @@ The `print_and_plot_probabilities` function plots the probabilities of the corre
 
 ``` json
 {
-Question: How many legs do horses have?
-Answer: four
-Generated Answer 8: pérí️́
-Generated Answer 16: /******/lopeñosaurus
-Generated Answer 24: None
-Generated Answer 32: four.
+"Question": "How many legs do horses have?",
+"Answer": "four",
+"Generated Answer 8": "pérí️́",
+"Generated Answer 16": "/******/lopeñosaurus",
+"Generated Answer 24": "None",
+"Generated Answer 32": "four."
 }
 ```
 
-![Probability Plot](path/to/probability_plot.png)
+![Probability Plot](/probability_plot.png)
 
 This visualization provides insights into how the model's confidence in its predictions changes with different layers. However, the first layer's probability for the correct answer do not differ significantly.
 
