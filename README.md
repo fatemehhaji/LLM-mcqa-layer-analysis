@@ -66,6 +66,19 @@ To generate results:
 - **Run the Code:** Execute the code to perform beam search and generate responses.
 - **Analyze Results:** Examine the dataset to see responses and answers generated for each layer.
 
+## Accessing a Specific Layer: Simple explanation 
+
+Here's a snippet to demonstrate how to access a specific layer after a forward pass:
+
+```python
+outputs = model(input_ids, output_hidden_states=True)
+layer_output = outputs.hidden_states[layer_index]
+logits = model.lm_head(layer_output[:, -1, :])
+probs = F.softmax(logits, dim=-1)
+```
+This simple code snippet shows how to access the hidden states of a particular layer, which can then be further analyzed or used.
+
+
 ## Results
 
 We evaluated the accuracy of multiple-choice question answering across different layers of the Mistral-7B-Instruct-v0.2 Large Language Model (LLM). The results, presented below, show how accuracy varies as we progress through the layers:
@@ -76,6 +89,14 @@ We evaluated the accuracy of multiple-choice question answering across different
 - **Layer 32:** Best performance, about 47% of questions answered correctly.
 
 Overall, accuracy improved progressively as the model processed deeper layers, suggesting that later layers contribute more effectively to accurate multiple-choice question answering.
+
+## Probability Analysis
+
+The `print_and_plot_probabilities` function plots the probabilities of the correct answer across different layers. The plot shows that as the layers deepen, the model becomes better at predicting the correct answer with higher probability, as seen in the last layer:
+
+![Probability Plot](path/to/probability_plot.png)
+
+This visualization provides insights into how the model's confidence in its predictions changes with different layers. However, the first layer's probability for the correct answer do not differ significantly.
 
 ## Observations
 
